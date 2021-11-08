@@ -41,3 +41,11 @@ td {
 .Board-turntext {
   margin: 1rem;
 }
+
+.overlay {
+  position: absolute;
+  z-index: 1;
+  background-color: rgb(52, 73, 128, 0.5);
+  width: 12.5rem;
+  height: 12.5rem;
+}
