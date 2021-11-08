@@ -63,6 +63,7 @@ export default function Board(): JSX.Element {
       <h1 className="Board-header">TicTacToe</h1>
       <div>
         <table className="Board">
+          {(noughtsWin || crossesWin) && <div className="overlay"></div>}
           <tbody>{renderBoard()}</tbody>
         </table>
       </div>
