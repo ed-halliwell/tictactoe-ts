@@ -1,7 +1,12 @@
-import { greet } from "./utils/greet";
+import Board from "./components/Board";
+import "./styles/App.css";
 
 function App(): JSX.Element {
-  return <h1>{greet("World")}</h1>;
+  return (
+    <div className="App">
+      <Board />
+    </div>
+  );
 }
 
 export default App;
