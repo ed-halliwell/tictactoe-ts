@@ -1,4 +1,4 @@
-import Board from "./Board";
+import Board from "./components/Board";
 import "./styles/App.css";
 
 function App(): JSX.Element {
