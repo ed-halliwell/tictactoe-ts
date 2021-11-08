@@ -14,7 +14,7 @@ export default function Board(): JSX.Element {
     [1, 1, 1],
   ]);
 
-  const createStarterBoard = (): void => {
+  const createNewBoard = (): void => {
     setPlayer1Turn(true);
     setNoughtsWin(false);
     setCrossesWin(false);
@@ -71,7 +71,7 @@ export default function Board(): JSX.Element {
         noughtsWin={noughtsWin}
         crossesWin={crossesWin}
       />
-      <button className="Board-reset" onClick={createStarterBoard}>
+      <button className="Board-reset" onClick={createNewBoard}>
         New Game
       </button>
     </div>
