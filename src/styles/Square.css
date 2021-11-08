@@ -11,6 +11,7 @@
   align-items: center;
   border: none;
   color: rgb(52, 73, 128);
+  cursor: pointer;
 }
 
 .fa-circle {

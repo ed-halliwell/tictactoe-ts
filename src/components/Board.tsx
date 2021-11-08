@@ -8,58 +8,48 @@ export default function Board(): JSX.Element {
   const [player1Turn, setPlayer1Turn] = useState<boolean>(true);
   const [noughtsWin, setNoughtsWin] = useState<boolean>(false);
   const [crossesWin, setCrossesWin] = useState<boolean>(false);
-  const [board, setBoard] = useState<any>([]);
+  const [board, setBoard] = useState<number[][]>([
+    [1, 1, 1],
+    [1, 1, 1],
+    [1, 1, 1],
+  ]);
 
-  const createBoard = () => {
-    const board = [];
-    for (let y = 0; y < 3; y++) {
-      const row = [];
-      for (let x = 0; x < 3; x++) {
-        row.push(1);
-      }
-      board.push(row);
-    }
-    return board;
-  };
-  createBoard();
-
-  const handleResetBoard = () => {
+  const createStarterBoard = (): void => {
     setPlayer1Turn(true);
     setNoughtsWin(false);
     setCrossesWin(false);
-    setBoard([]);
+    setBoard([
+      [1, 1, 1],
+      [1, 1, 1],
+      [1, 1, 1],
+    ]);
   };
 
   const takeTurn = (coord: string) => {
-    const [y, x]: number[] = coord.split("-").map(Number);
+    const [y, x] = coord.split("-").map(Number);
 
     function updateSquare(y: number, x: number): void {
-      if (player1Turn) {
-        board[y][x] = 2;
-      } else {
-        board[y][x] = 3;
-      }
+      player1Turn ? (board[y][x] = 2) : (board[y][x] = 3);
     }
     updateSquare(y, x);
 
     setPlayer1Turn(!player1Turn);
     setNoughtsWin(checkNoughtsWin(board));
     setCrossesWin(checkCrossesWin(board));
-    setBoard(board);
   };
 
   const renderBoard = () => {
-    const tblBoard: any[] = [];
+    const tblBoard = [];
     for (let y = 0; y < 3; y++) {
       const row = [];
       for (let x = 0; x < 3; x++) {
         const coord = `${y}-${x}`;
         row.push(
           <Square
-            squareVal={1}
+            squareVal={board[y][x]}
             key={coord}
             takeTurn={() => takeTurn(coord)}
-            disabled={1 !== 1}
+            disabled={board[y][x] !== 1}
           />
         );
       }
@@ -81,7 +71,7 @@ export default function Board(): JSX.Element {
         noughtsWin={noughtsWin}
         crossesWin={crossesWin}
       />
-      <button className="Board-reset" onClick={handleResetBoard}>
+      <button className="Board-reset" onClick={createStarterBoard}>
         New Game
       </button>
     </div>

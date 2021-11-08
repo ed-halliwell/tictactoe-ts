@@ -2,7 +2,7 @@ import "../styles/Square.css";
 
 interface Props {
   squareVal: number;
-  takeTurn: (coord: any) => void;
+  takeTurn: (coord: string) => void;
   disabled: boolean;
 }
 
@@ -13,7 +13,7 @@ export default function Square(props: Props): JSX.Element {
     <td>
       <button
         className="Square"
-        onClick={(evt) => props.takeTurn(evt)}
+        onClick={(evt) => props.takeTurn(String(evt))}
         disabled={props.disabled}
       >
         <i className={classes} />
